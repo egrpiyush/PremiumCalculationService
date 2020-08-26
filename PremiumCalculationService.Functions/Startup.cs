@@ -3,7 +3,10 @@ using Autofac.Extensions.DependencyInjection;
 using MediatR;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using PremiumCalculationService.Application;
+using PremiumCalculationService.Application.Interfaces;
+using PremiumCalculationService.Application.Repositories;
 using PremiumCalculationService.Functions;
 using System;
 using System.Collections.Generic;
@@ -34,6 +37,9 @@ namespace PremiumCalculationService.Functions
 
             var applicationAssembly = typeof(AutofacModule).GetTypeInfo().Assembly;
             builder.Services
+                .AddTransient<IOccupationRepository, OccupationRepository>()
+                .AddTransient<IOccupationRatingRepository, OccupationRatingRepository>()
+                .AddTransient<IRatingRepository, RatingRepository>()
                 .AddMediatR(applicationAssembly);
 
             var containerBuilder = new ContainerBuilder();
