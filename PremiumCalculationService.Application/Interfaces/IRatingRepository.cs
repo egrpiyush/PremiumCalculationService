@@ -8,5 +8,6 @@ namespace PremiumCalculationService.Application.Interfaces
     public interface IRatingRepository
     {
         IList<RatingModel> GetRatings();
+        RatingModel GetRating(int ratingId);
     }
 }

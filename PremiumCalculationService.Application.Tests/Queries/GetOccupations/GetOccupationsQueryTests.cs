@@ -44,7 +44,7 @@ namespace PremiumCalculationService.Application.Tests.Queries.GetOccupations
                 .Returns(new List<OccupationModel>
                 {
                     Fixture.Build<OccupationModel>().Create()
-                }); ;
+                });
             var handler = new GetOccupationsQuery.Handler(repositoryMock.Object);
             //Act
             var result = await handler.Handle(request, CancellationToken);

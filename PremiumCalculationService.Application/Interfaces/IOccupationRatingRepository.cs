@@ -8,5 +8,6 @@ namespace PremiumCalculationService.Application.Interfaces
     public interface IOccupationRatingRepository
     {
         IList<OccupationRatingModel> GetOccupationRatings();
+        OccupationRatingModel GetOccupationRating(int occupationId);
     }
 }

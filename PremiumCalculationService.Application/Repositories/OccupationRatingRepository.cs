@@ -2,6 +2,7 @@
 using PremiumCalculationService.Application.Queries.GetOccupations;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace PremiumCalculationService.Application.Repositories
@@ -19,6 +20,12 @@ namespace PremiumCalculationService.Application.Repositories
                 new OccupationRatingModel{ OccupationId= 5, RatingId = 4 },
                 new OccupationRatingModel{ OccupationId= 6, RatingId = 3 }
             };
+        }
+
+        public OccupationRatingModel GetOccupationRating(int occupationId)
+        {
+            var occupationRatings = GetOccupationRatings();
+            return occupationRatings.FirstOrDefault(p => p.OccupationId == occupationId);
         }
     }
 }
