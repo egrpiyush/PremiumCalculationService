@@ -1,0 +1,13 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/PremiumCalculationService.Application/obj
+/PremiumCalculationService.Application/bin/Debug/netcoreapp3.1
+/PremiumCalculationService.Application.Tests/bin/Debug/netcoreapp3.1
+/PremiumCalculationService.Application.Tests/obj
+/PremiumCalculationService.Common/bin/Debug/netcoreapp3.1
+/PremiumCalculationService.Common/obj/Debug/netcoreapp3.1
+/PremiumCalculationService.Common/obj
+/PremiumCalculationService.Domain/bin/Debug/netstandard2.0
+/PremiumCalculationService.Domain/obj
