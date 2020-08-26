@@ -67,6 +67,46 @@ namespace PremiumCalculationService.Application.Tests.Queries.GetMonthlyPremium
         }
 
         [Fact]
+        public async void WhenOccupationHasNoRating_MonthlyPremiumShouldBeZero()
+        {
+            //Arange
+            var request = Fixture.Build<GetMonthlyPremiumQuery>().Create();
+            OccupationRatingModel occupationRating = null;
+            var occupationRatingRepositoryMock = Fixture.Freeze<Mock<IOccupationRatingRepository>>();
+            occupationRatingRepositoryMock.Setup(f => f.GetOccupationRating(request.OccupationId))
+                .Returns(occupationRating);
+            var rating = new RatingModel { Id = 3, Factor = 1.5M };
+            var ratingRepositoryMock = Fixture.Freeze<Mock<IRatingRepository>>();
+            ratingRepositoryMock.Setup(f => f.GetRating(It.IsAny<int>()))
+                .Returns(rating);
+            var handler = new GetMonthlyPremiumQuery.Handler(occupationRatingRepositoryMock.Object, ratingRepositoryMock.Object);
+            //Act
+            var result = await handler.Handle(request, CancellationToken);
+            //Assert
+            result.Amount.ShouldBe(0);
+        }
+
+        [Fact]
+        public async void WhenRatingDoesNotExist_MonthlyPremiumShouldBeZero()
+        {
+            //Arange
+            var request = Fixture.Build<GetMonthlyPremiumQuery>().Create();
+            var occupationRating = new OccupationRatingModel { OccupationId = 1, RatingId = 3 };
+            var occupationRatingRepositoryMock = Fixture.Freeze<Mock<IOccupationRatingRepository>>();
+            occupationRatingRepositoryMock.Setup(f => f.GetOccupationRating(request.OccupationId))
+                .Returns(occupationRating);
+            RatingModel rating = null;
+            var ratingRepositoryMock = Fixture.Freeze<Mock<IRatingRepository>>();
+            ratingRepositoryMock.Setup(f => f.GetRating(It.IsAny<int>()))
+                .Returns(rating);
+            var handler = new GetMonthlyPremiumQuery.Handler(occupationRatingRepositoryMock.Object, ratingRepositoryMock.Object);
+            //Act
+            var result = await handler.Handle(request, CancellationToken);
+            //Assert
+            result.Amount.ShouldBe(0);
+        }
+
+        [Fact]
         public async void WhenCoverAmountIsOne_MonthlyPremiumShouldNotBeZero()
         {
             //Arange

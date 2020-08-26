@@ -28,8 +28,12 @@ namespace PremiumCalculationService.Application.Queries.GetMonthlyPremium
             {
                 var monthlyPremium = new MonthlyPremium();
                 var occupationRating = _occupationRatingRepository.GetOccupationRating(request.OccupationId);
-                var occupationRatingFactor = _ratingRepository.GetRating(occupationRating.RatingId).Factor;
-                monthlyPremium.Amount = (request.CoverAmount * occupationRatingFactor * request.Age) / 1000 * 12;
+                if (occupationRating == null)
+                    return monthlyPremium;
+                var rating = _ratingRepository.GetRating(occupationRating.RatingId);
+                if (rating == null)
+                    return monthlyPremium;
+                monthlyPremium.Amount = (request.CoverAmount * rating.Factor * request.Age) / 1000 * 12;
                 return monthlyPremium;
             }
         }
