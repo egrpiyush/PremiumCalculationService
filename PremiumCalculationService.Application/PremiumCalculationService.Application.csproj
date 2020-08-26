@@ -11,4 +11,8 @@
     <PackageReference Include="MediatR" Version="8.1.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PremiumCalculationService.Common\PremiumCalculationService.Common.csproj" />
+  </ItemGroup>
+
 </Project>

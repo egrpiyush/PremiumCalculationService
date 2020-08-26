@@ -12,6 +12,10 @@
     <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="3.0.3" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PremiumCalculationService.Application\PremiumCalculationService.Application.csproj" />
+    <ProjectReference Include="..\PremiumCalculationService.Common\PremiumCalculationService.Common.csproj" />
+  </ItemGroup>
+  <ItemGroup>
     <None Update="host.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
