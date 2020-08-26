@@ -4,9 +4,9 @@ using System.Text;
 
 namespace PremiumCalculationService.Domain.Entities
 {
-    public class Occupation
+    public class OccupationRating
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
+        public int OccupationId { get; set; }
+        public int RatingId { get; set; }
     }
 }

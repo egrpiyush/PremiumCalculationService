@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace PremiumCalculationService.Domain.Entities
+namespace PremiumCalculationService.Application.Queries.GetOccupations
 {
-    public class Rating
+    public class OccupationModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public decimal Factor { get; set; }
     }
 }
