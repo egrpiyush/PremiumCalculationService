@@ -17,6 +17,23 @@ namespace PremiumCalculationService.Application.Tests.Queries.GetOccupations
         private static readonly CancellationToken CancellationToken = CancellationToken.None;
 
         [Fact]
+        public async void WhenNoOccupationsExist_ShouldReturnNull()
+        {
+            //Arange
+            var request = Fixture.Build<GetOccupationsQuery>()
+                .Create();
+            IList<OccupationModel> occupations = null;
+            var repositoryMock = Fixture.Freeze<Mock<IOccupationRepository>>();
+            repositoryMock.Setup(f => f.GetOccupations())
+                .Returns(occupations); ;
+            var handler = new GetOccupationsQuery.Handler(repositoryMock.Object);
+            //Act
+            var result = await handler.Handle(request, CancellationToken);
+            //Assert
+            result.ShouldBeNull();
+        }
+
+        [Fact]
         public async void WhenOneOccupationExists_ShouldReturnOneOccupation()
         {
             //Arange

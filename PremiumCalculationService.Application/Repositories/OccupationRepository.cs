@@ -15,8 +15,9 @@ namespace PremiumCalculationService.Application.Repositories
                 new OccupationModel{ Id= 1, Name = "Cleaner"},
                 new OccupationModel{ Id= 2, Name = "Doctor"},
                 new OccupationModel{ Id= 3, Name = "Author"},
-                new OccupationModel{ Id= 4, Name = "Doctor"},
-                new OccupationModel{ Id= 5, Name = "Doctor"}
+                new OccupationModel{ Id= 4, Name = "Farmer"},
+                new OccupationModel{ Id= 5, Name = "Mechanic"},
+                new OccupationModel{ Id= 6, Name = "Florist"}
             };
         }
     }

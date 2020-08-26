@@ -14,7 +14,7 @@ namespace PremiumCalculationService.Application.Repositories
                 new RatingModel{ Id= 1, Name = "Professional", Factor = 1},
                 new RatingModel{ Id= 2, Name = "White Collar", Factor = 1.25M},
                 new RatingModel{ Id= 3, Name = "Light Manual", Factor = 1.5M},
-                new RatingModel{ Id= 4, Name = "Light Manual", Factor = 1.75M}
+                new RatingModel{ Id= 4, Name = "Heavy Manual", Factor = 1.75M}
             };
         }
     }
